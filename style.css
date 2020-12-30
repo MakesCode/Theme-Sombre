@@ -1,0 +1,149 @@
+/*
+=============== 
+Variables
+===============
+*/
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+:root {
+    --clr-background: #eceff1;
+    --clr-base: #ffffff;
+    --clr-primary: #aa00ff;
+    --clr-gray: #263238;
+    --clr-shadow: 0px 0px 7px rgb(151, 151, 151);
+
+    --font-size: 16px;
+    --border-radius: 0.2em;
+}
+.dark-mode {
+    --clr-background: #263238;
+    --clr-base: black;
+    --clr-primary: #69f0ae;
+    --clr-gray: #e0f7fa;
+}
+body {
+    font-family: "Open Sans", sans-serif;
+    background-color: var(--clr-background);
+    color: var(--clr-gray);
+    font-size: var(--font-size);
+} 
+/*
+=============== 
+Section DarkMode
+===============
+*/
+.wrapper-color-switch {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    margin: 3rem;
+}  
+.color-switch {
+    width: 4em;
+    height: 2em;
+    border-radius: 10em;
+    background: var(--clr-base);
+    border: 2px solid var(--clr-primary);
+    position: absolute;
+    cursor: pointer;
+} 
+.color-switch-toggle {
+    width: 1.5em;
+    height: 1.5em;
+    background: var(--clr-primary);
+    position: absolute;
+    border-radius: 10em;
+    top: 0.1em;
+    left: 0.1em;
+    cursor: pointer;
+    transition: all 250ms ease-in-out;
+} 
+.color-switch::before {
+    content: "Thème clair activé";
+    position: absolute;
+    display: inline-block;
+    width: 12em;
+    left: -10em;
+    top: 0.2em;
+}
+#input-color-switch:checked ~ .color-switch::before {
+    content: "Thème sombre activé";
+    left: -11em;
+} 
+#input-color-switch:checked ~ label .color-switch-toggle {
+    transform: translatex(2em);
+} 
+#input-color-switch {
+    display: none;
+}
+/*
+=============== 
+Section Navbar
+===============
+*/
+.navbar {
+    width: 100vw;
+    background-color: var(--clr-primary);
+    margin: 0;
+}
+.navbar ul {
+    list-style: none;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    margin: 0;
+    height: 3em;
+    padding: 0;
+}
+.navbar ul li {
+    padding-right: 2em;
+    font-weight: bold;
+    color: var(--clr-base);
+}
+.navbar li:first-child {
+    margin-right: auto;
+    margin-left: 2em;
+}
+.navbar svg {
+    fill: var(--clr-base);
+} 
+/*
+=============== 
+Section Grid
+===============
+*/
+#wrapper-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 1.5em;
+    margin: 1rem;
+}
+.container {
+    background-color: var(--clr-base);
+    border-radius: var(--border-radius);
+    padding: 1em;
+    border-top: 4px solid var(--clr-primary);
+    box-shadow: var(--clr-shadow);
+} 
+h2 {
+    margin-bottom: 0.2em;
+    margin-top: 0.5em;
+}
+p.date {
+    font-size: 0.8em;
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    margin-bottom: -1em;
+    margin-top: 0em;
+}
+@media screen and (max-width: 750px) {
+    body {
+      --font-size: 14px;
+    }
+    #wrapper-grid {
+      grid-template-columns: 1fr;
+    }
+}
